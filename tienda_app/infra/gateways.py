@@ -7,7 +7,9 @@ class BancoNacionalProcesador(ProcesadorPago):
     Simula un banco local escribiendo en un log.
     """
     def pagar(self, monto: float) -> bool:
-        # Simulamos una operación de red o persistencia externa
-        with open("pagos_locales.log", "a") as f:
-            f.write(f"[{datetime.datetime.now()}] BANCO NACIONAL - Cobro procesado: ${monto}\n")
+        # SUSTITUYA "SU_NOMBRE" por su nombre y apellido real
+        archivo_log = "pagos_locales_MIGUEL_ANGEL_CORREA_PIEDRAHITA.log"
+
+        with open(archivo_log, "a") as f:
+            f.write(f"[{datetime.datetime.now()}] Transaccion exitosa por: ${monto:.2f}\n")
         return True

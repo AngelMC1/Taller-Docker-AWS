@@ -3,9 +3,23 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from tienda_app.infra.factories import PaymentFactory
+from tienda_app.models import Libro
 from tienda_app.services import CompraService
 
-from .serializers import OrdenInputSerializer
+from .serializers import LibroSerializer, OrdenInputSerializer
+
+
+class LibroListAPIView(APIView):
+    """
+    GET /api/v1/libros/
+    Retorna todos los libros con su stock actual.
+    Permite verificar que una compra via API descuenta el inventario.
+    """
+
+    def get(self, request):
+        libros = Libro.objects.select_related('inventario').all()
+        serializer = LibroSerializer(libros, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class CompraAPIView(APIView):

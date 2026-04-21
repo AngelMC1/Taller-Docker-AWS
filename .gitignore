@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+db.sqlite3
+*.log
+/static/
+/media/
+
+# Entorno virtual
+venv/
+env/
+.venv/
+
+# Variables de entorno (contiene credenciales)
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+*.tar
