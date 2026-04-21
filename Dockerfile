@@ -21,5 +21,5 @@ COPY . /app/
 # 7. Expone el puerto 8000
 EXPOSE 8000
 
-# 8. Comando por defecto: migra y levanta el servidor
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+# 8. Comando por defecto: migra y levanta con Gunicorn (servidor WSGI de produccion)
+CMD ["sh", "-c", "python manage.py migrate && gunicorn Tienda.wsgi:application --bind 0.0.0.0:8000 --workers 2"]
